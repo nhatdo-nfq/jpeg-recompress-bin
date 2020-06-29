@@ -31,7 +31,7 @@ before_install:
       cd ..
       git clone https://github.com/mozilla/mozjpeg.git /tmp/mozjpeg
       cd /tmp/mozjpeg
-      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' -DCMAKE_CXX_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-g++.exe' -DZLIB_LIBRARY="/tmp/zlib.lib" -DZLIB_INCLUDE_DIR="/tmp/zlib" -DPNG_LIBRARY="/tmp/libpng/libpng16.dll.a" -DPNG_PNG_INCLUDE_DIR="/tmp/libpng" -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" .
+      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' -DZLIB_LIBRARY="/tmp/zlib.lib" -DZLIB_INCLUDE_DIR="/tmp/zlib" -DPNG_LIBRARY="/tmp/libpng/libpng16.a" -DPNG_PNG_INCLUDE_DIR="/tmp/libpng" -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" .
       CC='/c/ProgramData/chocolatey/bin/i686-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe
       # CC='/c/ProgramData/chocolatey/bin/i686-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe test
       ;;
