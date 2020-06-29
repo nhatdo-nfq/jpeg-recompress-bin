@@ -24,8 +24,10 @@ before_install:
       git clone https://github.com/glennrp/libpng /tmp/libpng
       cd /tmp/libpng
       cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" -DZLIB_LIBRARY="/tmp/zlib/libzlib.dll.a" -DZLIB_INCLUDE_DIR="/tmp/zlib" .
+      cp scripts/pnglibconf.h.prebuilt pnglibconf.h
+      cp scripts/makefile.msys makefile
       /c/ProgramData/chocolatey/bin/mingw32-make.exe
-      /c/ProgramData/chocolatey/bin/mingw32-make.exe -DZLIB_LIBRARY="/tmp/zlib/libzlib.dll.a" -DZLIB_INCLUDE_DIR="/tmp/zlib" test
+      /c/ProgramData/chocolatey/bin/mingw32-make.exe test
       ;;
       osx)
       brew install mozjpeg
