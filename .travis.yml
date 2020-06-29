@@ -20,6 +20,7 @@ before_install:
       cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" .
       /c/ProgramData/chocolatey/bin/mingw32-make.exe
       /c/ProgramData/chocolatey/bin/mingw32-make.exe test
+      /c/ProgramData/chocolatey/bin/mingw32-make.exe install
       cd ..
       git clone https://github.com/glennrp/libpng /tmp/libpng
       cd /tmp/libpng
@@ -28,6 +29,7 @@ before_install:
       cp scripts/makefile.msys makefile
       /c/ProgramData/chocolatey/bin/mingw32-make.exe
       /c/ProgramData/chocolatey/bin/mingw32-make.exe test
+      /c/ProgramData/chocolatey/bin/mingw32-make.exe install
       cd ..
       git clone https://github.com/mozilla/mozjpeg.git /tmp/mozjpeg
       cd /tmp/mozjpeg
