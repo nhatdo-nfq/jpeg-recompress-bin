@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-  - '14'
+  # - '14'
   - '12'
-  - '10'
+  # - '10'
 os:
-  - linux
+  # - linux
   - windows
-  - osx
+  # - osx
 before_install:
-  - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install mozjpeg; fi
+  # - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install mozjpeg; fi
   - | 
       case $TRAVIS_OS_NAME in
       windows)
@@ -16,7 +16,10 @@ before_install:
       git clone https://github.com/madler/zlib.git /tmp/zlib
       cd /tmp/zlib
       export PATH=/c/ProgramData/chocolatey/bin:$PATH
-      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="mingw32-make.exe" -DCMAKE_C_COMPILER='x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="ar.exe" .
+      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" .
       mingw32-make.exe
+      ;;
+      osx)
+      brew install mozjpeg
       ;;
       esac
