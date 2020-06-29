@@ -24,3 +24,5 @@ before_install:
       brew install mozjpeg
       ;;
       esac
+script:
+  - echo "testing"
