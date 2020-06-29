@@ -9,3 +9,14 @@ os:
   - osx
 before_install:
   - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install mozjpeg; fi
+  - | 
+      case $TRAVIS_OS_NAME in
+      windows)
+      choco install -y nasm
+      git clone https://github.com/madler/zlib.git /tmp/zlib
+      cd /tmp/zlib
+      export PATH=/c/ProgramData/chocolatey/bin:$PATH
+      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="mingw32-make.exe" -DCMAKE_C_COMPILER='x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="ar.exe" .
+      mingw32-make.exe
+      ;;
+      esac
