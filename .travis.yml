@@ -44,29 +44,29 @@ before_install:
         ;;
         linux)
           echo "Building for Linux"
-          apt-get install -y cmake git nasm
+          sudo apt-get install -y cmake git nasm
           echo "Compiling Zlib"
           git clone https://github.com/madler/zlib.git $HOME/zlib
           cd $HOME/zlib
           cmake -G"Unix Makefiles"
           make 
-          make install
-          cd ..
-          echo "Compiling Libpng"
-          git clone https://github.com/glennrp/libpng $HOME/libpng
-          cd $HOME/libpng
-          cmake -G"Unix Makefiles" -DZLIB_LIBRARY="$HOME/zlib/libzlib.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" .
-          make
-          make test
-          make install
-          echo "Compiling Mozjpeg"
-          git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
-          cd $HOME/mozjpeg
-          mkdir build 
-          cd build 
-          cmake -G"Unix Makefiles" -DPNG_SUPPORTED=TRUE ../ 
-          make SHARED=0 CC='gcc -static' 
-          make install
+          sudo make install
+          # cd ..
+          # echo "Compiling Libpng"
+          # git clone https://github.com/glennrp/libpng $HOME/libpng
+          # cd $HOME/libpng
+          # cmake -G"Unix Makefiles" -DZLIB_LIBRARY="$HOME/zlib/libzlib.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" .
+          # make
+          # make test
+          # sudo make install
+          # echo "Compiling Mozjpeg"
+          # git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
+          # cd $HOME/mozjpeg
+          # mkdir build 
+          # cd build 
+          # cmake -G"Unix Makefiles" -DPNG_SUPPORTED=TRUE ../ 
+          # make SHARED=0 CC='gcc -static' 
+          # sudo make install
         ;;
       esac
 compiler:
