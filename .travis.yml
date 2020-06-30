@@ -4,9 +4,9 @@ node_js:
   - '12'
   # - '10'
 os:
-  - linux
+  # - linux
   # - windows
-  # - osx
+  - osx
 before_install:
   # - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install mozjpeg; fi
   - | 
