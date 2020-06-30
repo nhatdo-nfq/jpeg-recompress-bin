@@ -5,8 +5,8 @@ node_js:
   # - '10'
 os:
   - linux
-  # - windows
-  # - osx
+  - windows
+  - osx
 before_install:
   - | 
       case $TRAVIS_OS_NAME in
@@ -96,7 +96,6 @@ before_deploy:
   - export TRAVIS_TAG="$TRAVIS_BUILD_NUMBER"
   - git config --local user.name "$USER_NAME"
   - git config --local user.email "$USER_EMAIL"
-  # - git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
   - echo $TRAVIS_BRANCH
 deploy:
     provider: releases
