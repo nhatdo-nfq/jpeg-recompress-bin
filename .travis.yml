@@ -56,6 +56,7 @@ before_install:
           echo "Compiling Libpng"
           git clone https://github.com/glennrp/libpng $HOME/libpng
           cd $HOME/libpng
+          ./configure
           cmake -G"Unix Makefiles" -DZLIB_LIBRARY="$HOME/zlib/libzlib.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" .
           make
           cp scripts/pnglibconf.h.prebuilt pnglibconf.h
