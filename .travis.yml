@@ -12,12 +12,12 @@ before_install:
   - | 
       case $TRAVIS_OS_NAME in
       windows)
+      pwd
+      ls -la
       choco install -y nasm
       echo "Compiling Zlib"
       git clone https://github.com/madler/zlib.git /tmp/zlib
       cd /tmp/zlib
-      # export PATH=/c/ProgramData/chocolatey/bin:$PATH
-      export MAKE=mingw32-make
       cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" .
       /c/ProgramData/chocolatey/bin/mingw32-make.exe
       /c/ProgramData/chocolatey/bin/mingw32-make.exe test
