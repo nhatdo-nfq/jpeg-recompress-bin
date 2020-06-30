@@ -39,7 +39,7 @@ before_install:
       echo "Compiling Jpeg Archive"
       git clone https://github.com/danielgtaylor/jpeg-archive.git $HOME/jpeg-archive
       cd $HOME/jpeg-archive
-      CC='/c/ProgramData/chocolatey/bin/i686-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe
+      CC='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe
       ;;
       osx)
       brew install mozjpeg
