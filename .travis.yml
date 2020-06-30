@@ -40,36 +40,7 @@ before_install:
           CC='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe
         ;;
         osx)
-         echo "Building for OSC"
-          brew install -y cmake
-          brew install -y git
-          brew install -y nasm
-          echo "Compiling Zlib"
-          git clone https://github.com/madler/zlib.git $HOME/zlib
-          cd $HOME/zlib
-          cmake -G"Unix Makefiles"
-          make
-          make test 
-          sudo make install
-          cd ..
-          echo "Compiling Libpng"
-          git clone https://github.com/glennrp/libpng $HOME/libpng
-          cd $HOME/libpng
-          ./configure
-          cmake -G"Unix Makefiles" .
-          make
-          cp scripts/pnglibconf.h.prebuilt pnglibconf.h
-          cp scripts/makefile.linux makefile
-          make test
-          sudo make install
-          echo "Compiling Mozjpeg"
-          git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
-          cd $HOME/mozjpeg
-          mkdir build 
-          cd build 
-          cmake -G"Unix Makefiles" -DPNG_SUPPORTED=TRUE -DWITH_JPEG8=1 ../ 
-          make SHARED=0 CC='gcc -static' 
-          sudo make install
+          brew install mozjpeg
           echo "Compiling Jpeg Archive"
           git clone https://github.com/danielgtaylor/jpeg-archive.git $HOME/jpeg-archive
           cd $HOME/jpeg-archive
