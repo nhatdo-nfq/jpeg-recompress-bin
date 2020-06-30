@@ -63,14 +63,14 @@ before_install:
           cp scripts/makefile.linux makefile
           make test
           sudo make install
-          # echo "Compiling Mozjpeg"
-          # git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
-          # cd $HOME/mozjpeg
-          # mkdir build 
-          # cd build 
-          # cmake -G"Unix Makefiles" -DPNG_SUPPORTED=TRUE ../ 
-          # make SHARED=0 CC='gcc -static' 
-          # sudo make install
+          echo "Compiling Mozjpeg"
+          git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
+          cd $HOME/mozjpeg
+          mkdir build 
+          cd build 
+          cmake -G"Unix Makefiles" -DPNG_SUPPORTED=TRUE ../ 
+          make SHARED=0 CC='gcc -static' 
+          sudo make install
         ;;
       esac
 compiler:
