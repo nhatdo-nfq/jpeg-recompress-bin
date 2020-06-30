@@ -4,11 +4,10 @@ node_js:
   - '12'
   # - '10'
 os:
-  # - linux
-  # - windows
+  - linux
+  - windows
   - osx
 before_install:
-  # - if [[ $TRAVIS_OS_NAME == 'osx' ]]; then brew install mozjpeg; fi
   - | 
       case $TRAVIS_OS_NAME in
         windows)
@@ -84,7 +83,6 @@ before_install:
         ;;
       esac
 compiler:
-    # - clang
     - gcc
 script:
   - echo "Completed!!!"
