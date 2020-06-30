@@ -44,7 +44,20 @@ before_install:
         ;;
         linux)
           echo "Building for Linux"
-          apt-get install -y cmake zlib1g-dev git libpng16-dev nasm
+          apt-get install -y cmake git nasm
+          echo "Compiling Zlib"
+          git clone https://github.com/madler/zlib.git $HOME/zlib
+          cd $HOME/zlib
+          make 
+          make install
+          cd ..
+          echo "Compiling Libpng"
+          git clone https://github.com/glennrp/libpng $HOME/libpng
+          cd $HOME/libpng
+          make
+          make test
+          make install
+          echo "Compiling Mozjpeg"
           git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
           cd $HOME/mozjpeg
           mkdir build 
