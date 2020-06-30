@@ -49,7 +49,8 @@ before_install:
           git clone https://github.com/madler/zlib.git $HOME/zlib
           cd $HOME/zlib
           cmake -G"Unix Makefiles"
-          make 
+          make
+          make test 
           sudo make install
           cd ..
           echo "Compiling Libpng"
@@ -57,6 +58,8 @@ before_install:
           cd $HOME/libpng
           cmake -G"Unix Makefiles" -DZLIB_LIBRARY="$HOME/zlib/libzlib.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" .
           make
+          cp scripts/pnglibconf.h.prebuilt pnglibconf.h
+          cp scripts/makefile.msys makefile
           make test
           sudo make install
           # echo "Compiling Mozjpeg"
