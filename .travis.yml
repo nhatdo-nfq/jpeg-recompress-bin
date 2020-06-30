@@ -48,12 +48,14 @@ before_install:
           echo "Compiling Zlib"
           git clone https://github.com/madler/zlib.git $HOME/zlib
           cd $HOME/zlib
+          cmake -G"Unix Makefiles"
           make 
           make install
           cd ..
           echo "Compiling Libpng"
           git clone https://github.com/glennrp/libpng $HOME/libpng
           cd $HOME/libpng
+          cmake -G"Unix Makefiles" -DZLIB_LIBRARY="$HOME/zlib/libzlib.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" .
           make
           make test
           make install
