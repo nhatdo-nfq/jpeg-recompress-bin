@@ -4,7 +4,7 @@ node_js:
   - '12'
   # - '10'
 os:
-  # - linux
+  - linux
   - windows
   # - osx
 before_install:
@@ -44,6 +44,18 @@ before_install:
       osx)
       brew install mozjpeg
       ;;
+      linux)
+      sudo apt-get install build-essential autoconf pkg-config nasm libtool
+      git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
+      cd $HOME/mozjpeg
+      autoreconf -fiv
+      ./configure --with-jpeg8
+      make
+      ls -la
+      ;;
       esac
+compiler:
+    # - clang
+    - gcc
 script:
   - echo "Completed!!!"
