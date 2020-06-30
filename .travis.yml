@@ -107,5 +107,6 @@ deploy:
     file:
         - $HOME/jpeg-archive/(jpeg-recompress|jpeg-recompress.exe)
     on:
+        all_branches: true
         condiion: $TRAVIS_BRANCH =~ ^(.*)-release$
         repo: nhatdo-nfq/jpeg-recompress-bin
