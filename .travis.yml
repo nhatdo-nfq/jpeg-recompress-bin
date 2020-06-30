@@ -111,6 +111,6 @@ deploy:
         - $HOME/jpeg-archive/osx-jpeg-recompress
         - $HOME/jpeg-archive/jpeg-recompress.exe
     on:
-        branch: releases
+        tags: true
         condiion: $TRAVIS_TAG =~ ^(.*)-release$
         repo: nhatdo-nfq/jpeg-recompress-bin
