@@ -91,11 +91,12 @@ compiler:
     - gcc
 script:
   - echo "Completed!!!"
+  - echo "$TRAVIS_TAG"
+  - echo $TRAVIS_BRANCH
 before_deploy:
-  - export TRAVIS_TAG="$TRAVIS_BUILD_NUMBER"
+  # - export TRAVIS_TAG="v$TRAVIS_BUILD_NUMBER-release"
   - git config --local user.name "$USER_NAME"
   - git config --local user.email "$USER_EMAIL"
-  - echo $TRAVIS_BRANCH
 deploy:
     provider: releases
     tag_name: $TRAVIS_TAG
@@ -110,6 +111,6 @@ deploy:
         - $HOME/jpeg-archive/osx-jpeg-recompress
         - $HOME/jpeg-archive/jpeg-recompress.exe
     on:
-        tags: true
+        branch: releases
         condiion: $TRAVIS_TAG =~ ^(.*)-release$
         repo: nhatdo-nfq/jpeg-recompress-bin
