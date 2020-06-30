@@ -38,7 +38,6 @@ before_install:
           cd $HOME/jpeg-archive
           CC='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe
           ./jpeg-recompress.exe --version
-          cp jpeg-recompress.exe jpeg-recompress.exe
         ;;
         osx)
           brew install mozjpeg
@@ -111,6 +110,6 @@ deploy:
         - $HOME/jpeg-archive/osx-jpeg-recompress
         - $HOME/jpeg-archive/jpeg-recompress.exe
     on:
-        all_branches: true
-        condiion: $TRAVIS_BRANCH =~ ^(.*)-release$
+        tags: true
+        condiion: $TRAVIS_TAG =~ ^(.*)-release$
         repo: nhatdo-nfq/jpeg-recompress-bin
