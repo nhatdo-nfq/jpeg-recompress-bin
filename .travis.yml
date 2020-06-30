@@ -16,29 +16,29 @@ before_install:
       ls -la
       choco install -y nasm
       echo "Compiling Zlib"
-      git clone https://github.com/madler/zlib.git /tmp/zlib
-      cd /tmp/zlib
+      git clone https://github.com/madler/zlib.git $HOME/zlib
+      cd $HOME/zlib
       cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" .
       /c/ProgramData/chocolatey/bin/mingw32-make.exe
       /c/ProgramData/chocolatey/bin/mingw32-make.exe test
       cd ..
       echo "Compiling Libpng"
-      git clone https://github.com/glennrp/libpng /tmp/libpng
-      cd /tmp/libpng
-      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" -DZLIB_LIBRARY="/tmp/zlib/libzlib.dll.a" -DZLIB_INCLUDE_DIR="/tmp/zlib" .
+      git clone https://github.com/glennrp/libpng $HOME/libpng
+      cd $HOME/libpng
+      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe'  -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" -DZLIB_LIBRARY="$HOME/zlib/libzlib.dll.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" .
       /c/ProgramData/chocolatey/bin/mingw32-make.exe
       cp scripts/pnglibconf.h.prebuilt pnglibconf.h
       cp scripts/makefile.msys makefile
       /c/ProgramData/chocolatey/bin/mingw32-make.exe test
       cd ..
       echo "Compiling Mozjpeg"
-      git clone https://github.com/mozilla/mozjpeg.git /tmp/mozjpeg
-      cd /tmp/mozjpeg
-      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' -DZLIB_LIBRARY="/tmp/zlib/libzlib.dll.a" -DZLIB_INCLUDE_DIR="/tmp/zlib" -DPNG_LIBRARY="/tmp/libpng/libpng16.a" -DPNG_PNG_INCLUDE_DIR="/tmp/libpng" -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" -DWITH_JPEG8=1 .
+      git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
+      cd $HOME/mozjpeg
+      cmake -G"MSYS Makefiles" -DCMAKE_MAKE_PROGRAM="/c/ProgramData/chocolatey/bin/mingw32-make.exe" -DCMAKE_C_COMPILER='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' -DZLIB_LIBRARY="$HOME/zlib/libzlib.dll.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" -DPNG_LIBRARY="$HOME/libpng/libpng16.a" -DPNG_PNG_INCLUDE_DIR="$HOME/libpng" -DCMAKE_AR="/c/ProgramData/chocolatey/bin/ar.exe" -DWITH_JPEG8=1 .
       /c/ProgramData/chocolatey/bin/mingw32-make.exe
       echo "Compiling Jpeg Archive"
-      git clone https://github.com/danielgtaylor/jpeg-archive.git /tmp/jpeg-archive
-      cd /tmp/jpeg-archive
+      git clone https://github.com/danielgtaylor/jpeg-archive.git $HOME/jpeg-archive
+      cd $HOME/jpeg-archive
       CC='/c/ProgramData/chocolatey/bin/i686-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe
       ;;
       osx)
