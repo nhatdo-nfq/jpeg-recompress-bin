@@ -44,13 +44,14 @@ before_install:
         ;;
         linux)
           echo "Building for Linux"
-          sudo apt-get install build-essential autoconf pkg-config nasm libtool
+          sudo apt-get install -y cmake zlib1g-dev git libpng16-dev nasm
           git clone https://github.com/mozilla/mozjpeg.git $HOME/mozjpeg
           cd $HOME/mozjpeg
-          autoreconf -fiv
-          ./configure --with-jpeg8
-          make
-          ls -la
+          mkdir build 
+          cd build 
+          cmake -G"Unix Makefiles" -DPNG_SUPPORTED=TRUE ../ 
+          make SHARED=0 CC='gcc -static' 
+          make install
         ;;
       esac
 compiler:
