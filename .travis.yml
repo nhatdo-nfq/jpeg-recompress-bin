@@ -57,7 +57,7 @@ before_install:
           git clone https://github.com/glennrp/libpng $HOME/libpng
           cd $HOME/libpng
           ./configure
-          cmake -G"Unix Makefiles" -DZLIB_LIBRARY="$HOME/zlib/libzlib.a" -DZLIB_INCLUDE_DIR="$HOME/zlib" .
+          cmake -G"Unix Makefiles" .
           make
           cp scripts/pnglibconf.h.prebuilt pnglibconf.h
           cp scripts/makefile.linux makefile
@@ -75,6 +75,7 @@ before_install:
           git clone https://github.com/danielgtaylor/jpeg-archive.git $HOME/jpeg-archive
           cd $HOME/jpeg-archive
           CC=gcc make
+          CC=gcc make test
         ;;
       esac
 compiler:
