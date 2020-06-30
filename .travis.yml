@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  # - '14'
+  - '14'
   - '12'
-  # - '10'
+  - '10'
 os:
   - linux
   - windows
@@ -95,8 +95,8 @@ script:
   - echo $TRAVIS_BRANCH
 before_deploy:
   # - export TRAVIS_TAG="v$TRAVIS_BUILD_NUMBER-release"
-  - git config --local user.name "$USER_NAME"
-  - git config --local user.email "$USER_EMAIL"
+  # - git config --local user.name "$USER_NAME"
+  # - git config --local user.email "$USER_EMAIL"
 deploy:
     provider: releases
     tag_name: $TRAVIS_TAG
