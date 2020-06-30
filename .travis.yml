@@ -5,8 +5,8 @@ node_js:
   # - '10'
 os:
   - linux
-  - windows
-  - osx
+  # - windows
+  # - osx
 before_install:
   - | 
       case $TRAVIS_OS_NAME in
@@ -38,6 +38,7 @@ before_install:
           cd $HOME/jpeg-archive
           CC='/c/ProgramData/chocolatey/bin/x86_64-w64-mingw32-gcc.exe' /c/ProgramData/chocolatey/bin/mingw32-make.exe
           ./jpeg-recompress.exe --version
+          cp jpeg-recompress.exe jpeg-recompress.exe
         ;;
         osx)
           brew install mozjpeg
@@ -47,6 +48,7 @@ before_install:
           CC=gcc make
           CC=gcc make test
           ./jpeg-recompress --version
+          cp jpeg-recompress osx-jpeg-recompress
         ;;
         linux)
           echo "Building for Linux"
@@ -83,6 +85,7 @@ before_install:
           CC=gcc make
           CC=gcc make test
           ./jpeg-recompress --version
+          cp jpeg-recompress linux-jpeg-recompress
         ;;
       esac
 compiler:
@@ -105,7 +108,9 @@ deploy:
     api_key: $github_token
     file_glob: true
     file:
-        - $HOME/jpeg-archive/(jpeg-recompress|jpeg-recompress.exe)
+        - $HOME/jpeg-archive/linux-jpeg-recompress
+        - $HOME/jpeg-archive/osx-jpeg-recompress
+        - $HOME/jpeg-archive/jpeg-recompress.exe
     on:
         all_branches: true
         condiion: $TRAVIS_BRANCH =~ ^(.*)-release$
