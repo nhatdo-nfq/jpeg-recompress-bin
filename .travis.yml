@@ -7,9 +7,15 @@ os:
   - linux
   - windows
   - osx
-jobs:
-  exclude:
-    - if: tag IS blank
+stages:
+  - name: before_install
+    if: tag IS present
+  - name: deploy
+    if: tag IS present
+  - name: before_deploy
+    if: tag IS present
+  - name: script
+    if: tag IS present
 before_install:
   - |
     case $TRAVIS_OS_NAME in
@@ -98,8 +104,8 @@ script:
   - echo $TRAVIS_BRANCH
 before_deploy:
 # - export TRAVIS_TAG="v$TRAVIS_BUILD_NUMBER-release"
-# - git config --local user.name "$USER_NAME"
-# - git config --local user.email "$USER_EMAIL"
+ - git config --local user.name "$USER_NAME"
+ - git config --local user.email "$USER_EMAIL"
 deploy:
   provider: releases
   tag_name: $TRAVIS_TAG
