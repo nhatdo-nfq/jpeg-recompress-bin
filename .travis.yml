@@ -7,15 +7,6 @@ os:
   - linux
   - windows
   - osx
-stages:
-  - name: install
-    if: tag IS present
-  - name: deploy
-    if: tag IS present
-  - name: before_deploy
-    if: tag IS present
-  - name: script
-    if: tag IS present
 install:
   - |
     if [ -n "$TRAVIS_TAG" ]; then
@@ -102,12 +93,6 @@ compiler:
   - gcc
 script:
   - echo "Completed!!!"
-  - echo "$TRAVIS_TAG"
-  - echo $TRAVIS_BRANCH
-before_deploy:
-# - export TRAVIS_TAG="v$TRAVIS_BUILD_NUMBER-release"
- - git config --local user.name "$USER_NAME"
- - git config --local user.email "$USER_EMAIL"
 deploy:
   provider: releases
   tag_name: $TRAVIS_TAG
