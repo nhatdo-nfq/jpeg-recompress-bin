@@ -8,7 +8,7 @@ os:
   - windows
   - osx
 stages:
-  - name: before_install
+  - name: install
     if: tag IS present
   - name: deploy
     if: tag IS present
@@ -16,7 +16,7 @@ stages:
     if: tag IS present
   - name: script
     if: tag IS present
-before_install:
+install:
   - |
     case $TRAVIS_OS_NAME in
       windows)
