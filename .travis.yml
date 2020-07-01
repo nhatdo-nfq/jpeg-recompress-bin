@@ -108,5 +108,4 @@ deploy:
     - $HOME/jpeg-archive/jpeg-recompress.exe
   on:
     tags: true
-#    condition: $TRAVIS_TAG =~ ^(.*)-release$
     repo: nhatdo-nfq/jpeg-recompress-bin
