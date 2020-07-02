@@ -108,4 +108,3 @@ deploy:
     - $HOME/jpeg-archive/jpeg-recompress.exe
   on:
     tags: true
-    repo: nhatdo-nfq/jpeg-recompress-bin
