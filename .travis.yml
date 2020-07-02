@@ -104,7 +104,7 @@ deploy:
   file_glob: true
   file:
     - $HOME/jpeg-archive/linux-jpeg-recompress
-    - $HOME/jpeg-archive/osx-jpeg-recompress
+    - $HOME/jpeg-archive/darwin-jpeg-recompress
     - $HOME/jpeg-archive/jpeg-recompress.exe
   on:
     tags: true
