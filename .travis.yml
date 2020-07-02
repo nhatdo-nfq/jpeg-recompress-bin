@@ -48,7 +48,7 @@ install:
           CC=gcc make
           CC=gcc make test
           ./jpeg-recompress --version
-          cp jpeg-recompress osx-jpeg-recompress
+          cp jpeg-recompress darwin-jpeg-recompress
         ;;
         linux)
           echo "Building for Linux"
